@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd">
+<changeSet id="fill-rooms" author="Julia Adikhanyan">
+    <insert tableName="room">
+        <column name="uuid" value="3d83abe8-245b-4765-aa2b-22f6e6b43785"/>
+        <column name="name" value="Seattle"/>
+        <column name="number_of_seats" value="10"/>
+        <column name="floor" value="5"/>
+        <column name="photo_url" value="Seattle.jpg"/>
+    </insert>
+
+    <insert tableName="room">
+        <column name="uuid" value="2292d2af-ff9d-4b5b-b16a-b25c70ec5294"/>
+        <column name="name" value="Chicago"/>
+        <column name="number_of_seats" value="12"/>
+        <column name="floor" value="1"/>
+        <column name="photo_url" value="Chicago.jpg"/>
+    </insert>
+
+    <insert tableName="room">
+        <column name="uuid" value="eb3c28e8-28e9-4788-afa1-758061a2f354"/>
+        <column name="name" value="Atlanta"/>
+        <column name="number_of_seats" value="8"/>
+        <column name="floor" value="8"/>
+        <column name="photo_url" value="Atlanta.jpg"/>
+    </insert>
+
+    <insert tableName="room">
+        <column name="uuid" value="7309d9cc-35c9-45e9-9d7b-73ff189f9c05"/>
+        <column name="name" value="Boston"/>
+        <column name="number_of_seats" value="6"/>
+        <column name="floor" value="1"/>
+        <column name="photo_url" value="Boston.jpg"/>
+    </insert>
+
+    <insert tableName="room">
+        <column name="uuid" value="7ef551c5-8948-4517-8964-7294dff7b222"/>
+        <column name="name" value="Dallas"/>
+        <column name="number_of_seats" value="14"/>
+        <column name="floor" value="5"/>
+        <column name="photo_url" value="Dallas.jpg"/>
+    </insert>
+
+    <insert tableName="room">
+        <column name="uuid" value="32c1f885-74cd-4274-a432-41646eaf29d1"/>
+        <column name="name" value="Los Angeles"/>
+        <column name="number_of_seats" value="6"/>
+        <column name="floor" value="10"/>
+        <column name="photo_url" value="Los_Angeles.jpg"/>
+    </insert>
+
+    <insert tableName="room">
+        <column name="uuid" value="0e6dd995-c9f3-4c93-b127-d652124d1d1a"/>
+        <column name="name" value="Houston"/>
+        <column name="number_of_seats" value="8"/>
+        <column name="floor" value="10"/>
+        <column name="photo_url" value="Houston.jpg"/>
+    </insert>
+
+    <insert tableName="room">
+        <column name="uuid" value="61fb599e-fe57-47ae-bcd0-5a2e11ae50b1"/>
+        <column name="name" value="Kansas City"/>
+        <column name="number_of_seats" value="10"/>
+        <column name="floor" value="10"/>
+        <column name="photo_url" value="Kansas_City.jpg"/>
+    </insert>
+
+    <insert tableName="room">
+        <column name="uuid" value="670818c5-2d19-4014-81bf-1719dce11ab6"/>
+        <column name="name" value="Las Vegas"/>
+        <column name="number_of_seats" value="12"/>
+        <column name="floor" value="10"/>
+        <column name="photo_url" value="Las_Vegas.jpg"/>
+    </insert>
+
+    <insert tableName="room">
+        <column name="uuid" value="b9760a6f-4ad5-4520-b2b7-144c5617538e"/>
+        <column name="name" value="New Orleans"/>
+        <column name="number_of_seats" value="16"/>
+        <column name="floor" value="12"/>
+        <column name="photo_url" value="New_Orleans.jpg"/>
+    </insert>
+
+    <insert tableName="room">
+        <column name="uuid" value="213c125b-5a67-4650-91d6-0ebc80df0f55"/>
+        <column name="name" value="New York"/>
+        <column name="number_of_seats" value="8"/>
+        <column name="floor" value="8"/>
+        <column name="photo_url" value="New_York.jpg"/>
+    </insert>
+
+    <insert tableName="room">
+        <column name="uuid" value="e4c0db56-2c7d-46eb-8445-f4ce5f191bf2"/>
+        <column name="name" value="Phoenix"/>
+        <column name="number_of_seats" value="10"/>
+        <column name="floor" value="10"/>
+        <column name="photo_url" value="Phoenix.jpg"/>
+    </insert>
+</changeSet>
+</databaseChangeLog>

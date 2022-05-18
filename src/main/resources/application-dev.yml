@@ -1,0 +1,41 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:h2DB;DB_CLOSE_DELAY=-1;CASE_INSENSITIVE_IDENTIFIERS=true
+    username: ${DB_USERNAME:sa}
+    password: ${DB_PASSWORD:password}
+    driver-class-name: org.h2.Driver
+  jpa:
+    database: h2
+    hibernate:
+      ddl-auto: validate
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog.yml
+    enabled: true
+  mail:
+    isActive: false
+    host: smtp.gmail.com
+    port: 587
+    username: vaska1s1perepechki
+    password: omvnhraibejwlncx
+    properties:
+      mail:
+        smtp:
+          starttls:
+            enable: true
+          auth: true
+
+server:
+  port: ${PORT:8000}
+
+security:
+  secret: ${JWT_SECRET:secret12345678}
+  token-life-time: 15m
+  refresh-token-life-time: 30d
+
+booking:
+  max-meeting-duration: 6h
+  max-future-distance: 365d

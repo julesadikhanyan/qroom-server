@@ -1,0 +1,41 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://postgres:5432/${POSTGRES_DB}
+    username: ${POSTGRES_USER}
+    password: ${POSTGRES_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    database: postgresql
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        default_schema: public
+  liquibase:
+    change-log: classpath:db/changelog/db.changelog.yml
+    enabled: true
+  mail:
+    isActive: false
+    host: smtp.gmail.com
+    port: 587
+    username: vaska1s1perepechki
+    password: omvnhraibejwlncx
+    properties:
+      mail:
+        smtp:
+          starttls:
+            enable: true
+          auth: true
+
+
+security:
+  secret: ${JWT_SECRET:secret12345678}
+  token-life-time: 30m
+  refresh-token-life-time: 30d
+
+server:
+  port: ${PORT:8080}
+
+booking:
+  max-meeting-duration: 6h
+  max-future-distance: 365d

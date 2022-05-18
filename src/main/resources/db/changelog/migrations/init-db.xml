@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd">
+
+    <changeSet id="init-db-scheme" author="Julia Adikhanyan">
+        <createTable tableName="room">
+            <column name="uuid" type="uuid">
+                <constraints primaryKey="true" nullable="false" unique="true"/>
+            </column>
+            <column name="name" type="varchar">
+                <constraints nullable="false" unique="false"/>
+            </column>
+            <column name="photo_url" type="varchar">
+                <constraints nullable="true" unique="false"/>
+            </column>
+            <column name="number_of_seats" type="int">
+                <constraints nullable="false" unique="false"/>
+            </column>
+            <column name="floor" type="int">
+                <constraints nullable="false" unique="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="user">
+            <column name="uuid" type="uuid">
+                <constraints primaryKey="true" nullable="false" unique="true"/>
+            </column>
+            <column name="login" type="varchar">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="password" type="varchar">
+                <constraints nullable="false" unique="false"/>
+            </column>
+            <column name="name" type="varchar">
+                <constraints nullable="false" unique="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="history">
+            <column name="uuid" type="uuid">
+                <constraints primaryKey="true" nullable="false" unique="true"/>
+            </column>
+            <column name="title" type="varchar">
+                <constraints nullable="false" unique="false"/>
+            </column>
+            <column name="start_time" type="timestamptz">
+                <constraints nullable="false" unique="false"/>
+            </column>
+            <column name="end_time" type="timestamp">
+                <constraints nullable="false" unique="false"/>
+            </column>
+            <column name="room_uuid" type="uuid">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status_id" type="int">
+                <constraints nullable="false" unique="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="history_status">
+            <column name="id" type="int">
+                <constraints primaryKey="true" nullable="false" unique="true"/>
+            </column>
+            <column name="name" type="varchar">
+                <constraints unique="true" nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="history_user_status">
+            <column name="id" type="int">
+                <constraints unique="true" primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar">
+                <constraints unique="true" nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="history_user">
+            <column name="history_uuid" type="uuid">
+                <constraints nullable="false" unique="false"/>
+            </column>
+            <column name="user_uuid" type="uuid">
+                <constraints nullable="false" unique="false"/>
+            </column>
+            <column name="is_admin" type="boolean">
+                <constraints nullable="false" unique="false"/>
+            </column>
+            <column name="status_id" type="int">
+                <constraints nullable="false" unique="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey tableName="history_user"
+                       columnNames="history_uuid, user_uuid"/>
+    </changeSet>
+
+    <changeSet id="init-db-index" author="Julia Adikhanyan">
+        <createIndex tableName="room" indexName="room_index">
+            <column name="uuid"/>
+        </createIndex>
+       <createIndex tableName="user" indexName="user_index">
+           <column name="uuid"/>
+       </createIndex>
+        <createIndex tableName="history" indexName="history_index">
+            <column name="uuid"/>
+        </createIndex>
+        <createIndex tableName="history_user" indexName="history_user_history_index">
+            <column name="history_uuid"/>
+        </createIndex>
+        <createIndex tableName="history_user" indexName="history_user_user_index">
+            <column name="user_uuid"/>
+        </createIndex>
+        <createIndex tableName="history_status" indexName="history_status_index">
+            <column name="id"/>
+        </createIndex>
+    </changeSet>
+
+    <changeSet id="init-db-foreign-key" author="Julia Adikhanyan">
+        <addForeignKeyConstraint
+                baseTableName="history"
+                baseColumnNames="room_uuid"
+                constraintName="fk_history_room"
+                referencedTableName="room"
+                referencedColumnNames="uuid"/>
+        <addForeignKeyConstraint
+                baseTableName="history_user"
+                baseColumnNames="history_uuid"
+                constraintName="fk_history_user_history"
+                referencedTableName="history"
+                referencedColumnNames="uuid"/>
+        <addForeignKeyConstraint
+                baseTableName="history_user"
+                baseColumnNames="user_uuid"
+                constraintName="fk_history_user_user"
+                referencedTableName="user"
+                referencedColumnNames="uuid"/>
+        <addForeignKeyConstraint
+                baseTableName="history"
+                baseColumnNames="status_id"
+                constraintName="fk_history_status"
+                referencedTableName="history_status"
+                referencedColumnNames="id"/>
+        <addForeignKeyConstraint
+                baseTableName="history_user"
+                baseColumnNames="status_id"
+                constraintName="fk_history_user_status"
+                referencedTableName="history_user_status"
+                referencedColumnNames="id"/>
+    </changeSet>
+
+</databaseChangeLog>

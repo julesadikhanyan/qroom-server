@@ -1,0 +1,13 @@
+databaseChangeLog:
+  - include:
+      file: migrations/init-db.xml
+      relativeToChangelogFile: true
+  - include:
+      file: migrations/fill-db-changelog.xml
+      relativeToChangelogFile: true
+  - include:
+      file: migrations/fill-enum-status-changelog.xml
+      relativeToChangelogFile: true
+#  - include:
+#      file: migrations/fill-history-table-changelog.xml
+#      relativeToChangelogFile: true
